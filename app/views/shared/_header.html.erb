@@ -1,0 +1,7 @@
+<b><%= link_to 'ImpressShare', :root %></b>
+<% if current_user %>
+  <%= link_to current_user.name , user_path(current_user)  %> / 
+  <%= link_to 'log out',  :session ,method: :delete %>
+<% else %>
+  <%= link_to 'log in' ,new_session_path %>
+<% end %>

@@ -1,0 +1,31 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+
+$ ->
+
+  # convert markdown to impress, then display
+  refreshPreview = ->
+    url = "/slides/preview"
+    console.log url
+    $.post(url, { content: $('#markdown-content').val() })
+    .done (data)->
+      preview.location.href = data.slide_path  
+
+  
+  # refresh
+  $('#btn-preview').on 'click', ->
+    refreshPreview()
+
+  # reload markdown content, then refreash the preview
+  $('#btn-reload').on 'click', ->
+    slide_id = $('input[name=slide-id]').val()
+    slide_show_url = "/slides/#{slide_id}"
+    slide_preview_url = "/slides/preview"
+    $.getJSON(slide_show_url)
+    .done (data)->
+      $('#markdown-content').val( data.markdown_content )
+      refreshPreview()
+
+

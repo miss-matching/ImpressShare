@@ -1,0 +1,65 @@
+<input name="slide-id" type="hidden" value="<%= @slide.id %>" />
+<%= form_for(@slide) do |f| %>
+  <% if @slide.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@slide.errors.count, "error") %> prohibited this slide from being saved:</h2>
+
+      <ul>
+      <% @slide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :kind %><br />
+    <%= f.select :kind, kind_options %>
+  </div>
+  <div class="field">
+    <%= f.label :identifier %> *cannot be changed<br />
+    <%= f.text_field :identifier %>
+  </div>
+  <div class="hogehoge-box">
+    <h3>github setting</h3>
+    <div class="field">
+      <%= f.label :github_url %><br />
+      <%= f.text_field :github_url %>
+    </div>
+  </div>
+
+  <div class="hogehoge-box">
+    <h3>edit markdown</h3>
+    <input type="button" id="btn-preview" value="preview">
+    <input type="button" id="btn-reload" value="reload">
+    <div class="field">
+      <%= f.label :markdown_content %><br />
+      <%= f.text_area :markdown_content, id: 'markdown-content' %>
+    </div>
+    <div class="field">
+      <%= f.label :command_options %><br />
+      <%= f.text_field :command_options %>
+    </div>
+    <div id="preview-box">
+      <iframe id="preview" src="/dummy_slide.html">
+      </iframe>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  title: MyString
+  description: MyString
+  kind: MyString
+  image_url: MyString
+  github_url: MyString
+  markdown_content: MyString
+  command_options: MyString
+
+two:
+  user: 
+  title: MyString
+  description: MyString
+  kind: MyString
+  image_url: MyString
+  github_url: MyString
+  markdown_content: MyString
+  command_options: MyString

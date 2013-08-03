@@ -1,0 +1,6 @@
+<%= form_tag :session, class: 'well' do %>
+  <h3>log in</h3>
+  <%= text_field_tag "login_id", "", placeholder: "login id", class: '' %>
+  <%= password_field_tag "password", "" %><br>
+  <%= submit_tag "ログイン" , class: "btn-ex btn-block btn-large " %><br>
+<% end %>

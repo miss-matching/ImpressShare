@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @slide.user %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @slide.title %>
+</p>
+
+<p>
+  <b>Identifier:</b>
+  <%= @slide.identifier %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @slide.description %>
+</p>
+
+<p>
+  <b>Kind:</b>
+  <%= @slide.kind %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @slide.image_url %>
+</p>
+
+<p>
+  <b>Github url:</b>
+  <%= @slide.github_url %>
+</p>
+
+<p>
+  <b>Command options:</b>
+  <%= @slide.command_options %>
+</p>
+
+<%= link_to 'Edit', edit_slide_path(@slide) %> |
+<%= link_to 'Back', slides_path %>
+<div id="preview-box">
+  <iframe id="preview" src="<%= path_for_iframe( @slide ) %>">
+  </iframe>
+</div>
+
+
