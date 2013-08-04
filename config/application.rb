@@ -59,11 +59,14 @@ module ImpressShareRails
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+
+    config.slide_root = 'public'
+    config.markdown_work_root = 'work'
+
     config.markdown_destination_directory_path = 'markdown/'
-    config.markdown_work_directory_path = 'markdown_work/'
     config.git_destination_directory_path = 'fromgit/'
 
-    config.preview_work_path = 'tmp/preview_work/'
+    config.preview_work_path = 'work/preview_work/'
     config.preview_path = 'preview/'
 
 

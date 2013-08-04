@@ -18,3 +18,5 @@
 # slide body
 /public/markdown/*
 /public/preview/*
+/public/fromgit/*
+/work/
