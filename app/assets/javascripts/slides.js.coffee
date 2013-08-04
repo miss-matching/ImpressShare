@@ -13,8 +13,7 @@ $ ->
     .done (data)->
       console.log data.page
       preview.location.href = data.slide_path  
-
-      preview.location.href = "http://localhost:3000#{data.page}" if data.page
+      preview.location.href = data.page if data.page
 
   
   # refresh
