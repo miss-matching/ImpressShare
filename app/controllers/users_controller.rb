@@ -1,6 +1,9 @@
+#coding: utf-8
 class UsersController < ApplicationController
 
-  skip_before_filter :login_required, only: [:new, :create]
+  before_filter :login_required, only: ['edit', 'update', 'destroy' ]
+  before_filter :default_fetch
+  before_filter :login_required_strict, only: [ :edit ]
 
   # GET /users
   # GET /users.json
@@ -83,4 +86,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def default_fetch
+    @user = User.find( params[:id] ) if params[:id].present?
+  end
+  def login_required_strict
+    raise StandardError.new( 'さわらないで' ) if  @user.id != @current_user.id 
+  end
+
 end

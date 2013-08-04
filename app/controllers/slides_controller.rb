@@ -33,11 +33,9 @@ class SlidesController < ApplicationController
     respond_to do |format|
       format.html do
         if needs_git_clone? 
-          # TODO: ここはパラレルを考えないとだめ
           SlideFileProc.git_clone_with_refresh(@slide)
         end
         if needs_markdown2impress? 
-          # TODO: ここはパラレルを考えないとだめ
           SlideFileProc.markdown2impress(@slide)
         end
 
