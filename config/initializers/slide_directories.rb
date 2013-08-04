@@ -6,6 +6,10 @@ Dir::mkdir( markdown_destination_dir ) unless File.exists?( markdown_destination
 Dir::mkdir( git_slide_destination_dir ) unless File.exists?( git_slide_destination_dir )
 Dir::mkdir( preview_dir ) unless File.exists?( preview_dir )
 
+
+work_dir = ImpressShareRails::Application.config.markdown_work_root
+Dir::mkdir( work_dir ) unless File.exists?( work_dir )
+
 markdown_work_dir = ImpressShareRails::Application.config.preview_work_path
 Dir::mkdir( markdown_work_dir ) unless File.exists?( markdown_work_dir )
 
