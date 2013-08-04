@@ -51,7 +51,6 @@ module SlideFileProc
   end
 
   def markdown2impress_hoge( content , destination )
-
     master_preview_wrk_path = ImpressShareRails::Application.config.preview_work_path
     preview_wrk_path = master_preview_wrk_path + UUIDTools::UUID.random_create + "/"
     work_file_name = Time.now.strftime("%s") + rand.to_s
@@ -62,7 +61,13 @@ module SlideFileProc
     foo.puts content
     foo.close
 
-    system("lib/markdown2impress/markdown2impress.pl #{working_file} --outputdir=#{destination}")
+    if ImpressShareRails::Application.config.bypass_markdown2impress
+      p 'Bypassed!!'
+      system(" cp -R script/markdown2impress/* #{destination}")
+    else
+      system("lib/markdown2impress/markdown2impress.pl #{working_file} --outputdir=#{destination}")
+    end
+
   end
 
   def markdown2impress_from_content( content )

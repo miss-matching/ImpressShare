@@ -17,5 +17,3 @@ Dir::mkdir( markdown_work_dir ) unless File.exists?( markdown_work_dir )
 
 
 
-
-
