@@ -8,7 +8,7 @@
 markdown2impressが動くかどうかチェックしましょう。
 
 ```
-ruby scirpt/verify_env
+ruby scirpt/verify_env.rb
 ```
 
 "you are ready to go with markdown2impress" と表示されれば勝ち。
