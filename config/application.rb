@@ -68,7 +68,7 @@ module ImpressShareRails
 
     config.preview_work_path = 'work/preview_work/'
     config.preview_path = 'preview/'
-
+    ImpressShareRails::Application.config.bypass_markdown2impress =  false
 
   end
 end
