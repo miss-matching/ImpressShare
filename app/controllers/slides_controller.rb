@@ -59,7 +59,7 @@ class SlidesController < ApplicationController
     page_uri = params[:location].scan( /\#.*/ )
 
     slide_path = SlideFileProc.markdown2impress_from_content(  { preview_dir_name: preview_dir_name, content: params[:content]} )
-    page = "#{slide_path}/#{page_url[0]}" if page_uri.present?
+    page = "#{slide_path}/#{page_uri[0]}" if page_uri.present?
 
     render json: { slide_path: slide_path, page: page }
 
