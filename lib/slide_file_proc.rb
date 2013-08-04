@@ -57,6 +57,7 @@ module SlideFileProc
     working_file = preview_wrk_path + work_file_name
 
     Dir::mkdir( preview_wrk_path ) unless File.exists?( preview_wrk_path )
+    system( "rm #{working_file}" )
     foo = File.open(working_file,'w')
     foo.puts content
     foo.close
@@ -70,17 +71,20 @@ module SlideFileProc
 
   end
 
-  def markdown2impress_from_content( content )
+  def markdown2impress_from_content( options )
+
+    content = options[:content]
+    preview_dir_name = options[:preview_dir_name] || UUIDTools::UUID.random_create
 
     master_preview_path = ImpressShareRails::Application.config.preview_path
-    preview_path = master_preview_path + UUIDTools::UUID.random_create + "/"
+    preview_path = master_preview_path + preview_dir_name + "/"
     preview_dir_path = "public/#{preview_path}"
 
     Dir::mkdir( preview_dir_path ) unless File.exists?( preview_dir_path )
 
     markdown2impress_hoge( content, preview_dir_path )
     
-    "/" + preview_path + "index.html"
+    "/" + preview_path 
 
 
   end
