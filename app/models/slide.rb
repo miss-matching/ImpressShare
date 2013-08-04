@@ -3,6 +3,8 @@ class Slide < ActiveRecord::Base
   attr_accessible :command_options, :description, :github_url, :image_url, :kind, :markdown_content, :title,
     :identifier
 
+  validates :identifier, presence: true, uniqueness: true
+
   KIND_GITHUB = '0'
   KIND_MARKDOWN = '1'
 
