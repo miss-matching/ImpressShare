@@ -1,6 +1,8 @@
 #coding: utf-8
 class SlidesController < ApplicationController
   before_filter :login_required, only: ['create', 'new', 'edit', 'update', 'destroy' ]
+  before_filter :default_fetch
+  before_filter :login_required_strict, only: [ :edit ]
 
 
   # GET /slides
@@ -39,7 +41,6 @@ class SlidesController < ApplicationController
 
   def preview
 
-    @slide = Slide.find_by_identifier( params[:id])
     slide_path = SlideFileProc.markdown2impress_from_content( params[:content] )
 
     #slide_path = "/markdown/1/wawa/index.html"
@@ -63,7 +64,6 @@ class SlidesController < ApplicationController
 
   # GET /slides/1/edit
   def edit
-    @slide = Slide.find(params[:id])
   end
 
   # POST /slides
@@ -96,7 +96,6 @@ class SlidesController < ApplicationController
   # PUT /slides/1
   # PUT /slides/1.json
   def update
-    @slide = Slide.find(params[:id])
 
     respond_to do |format|
       if @slide.update_attributes(params[:slide])
@@ -119,7 +118,6 @@ class SlidesController < ApplicationController
   # DELETE /slides/1
   # DELETE /slides/1.json
   def destroy
-    @slide = Slide.find(params[:id])
     @slide.destroy
 
     respond_to do |format|
@@ -135,4 +133,15 @@ class SlidesController < ApplicationController
   def needs_markdown2impress?
     @slide.is_markdown_slide? && SlideFileProc.missing_slide_file?(@slide)
   end
+
+
+
+  def default_fetch
+    @slide = Slide.find( params[:id] ) if params[:id].present?
+  end
+  def login_required_strict
+    raise StandardError.new( 'さわらないで' ) if  @slide.user_id != @current_user.id 
+  end
+
+
 end

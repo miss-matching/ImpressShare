@@ -1,5 +1,8 @@
 ImpressShareRails::Application.routes.draw do
 
+  resources :users
+
+
   resources :slides do
     post :preview, on: :collection
   end
