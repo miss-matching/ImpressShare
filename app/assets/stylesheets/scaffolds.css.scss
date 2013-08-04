@@ -69,3 +69,17 @@ div {
     list-style: square;
   }
 }
+
+#controlls {
+  list-style: none;
+  text-align: center;
+  li {
+    font-size: 30px;
+    list-style: none;
+    display: inline;
+    margin: 10px;
+  }
+  a {
+    text-decoration: none;
+  }
+}
