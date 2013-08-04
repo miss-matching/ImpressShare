@@ -1,31 +1,23 @@
 <h1>Listing slides</h1>
 
-<table>
-  <tr>
-    <th>kind</th>
-    <th>User</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Image url</th>
-    <th>Command options</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul class="listview fluid">
 <% @slides.each do |slide| %>
-  <tr>
-    <td><%= sign_for_slide_kind( slide ) %></td>
-    <td><%= slide.user.name %></td>
-    <td><%= slide.title %></td>
-    <td><%= slide.description %></td>
-    <td><%= slide.image_url %></td>
-    <td><%= link_to 'Show', slide %></td>
-    <td><%= link_to 'Edit', edit_slide_path(slide) %></td>
-    <td><%= link_to 'Destroy', slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <li>
+  
+    <div class="icon">
+      <%= image_tag 'rails.png' %>
+    </div>
+    <div class="data" >
+      kind:<%= sign_for_slide_kind( slide ) %>
+      <br>use:<%= slide.user.name %>
+      <br>title:<%= slide.title %>
+      <br>description:<%= slide.description %>
+      <br>image:<%= slide.image_url %>
+      <br><%= link_to 'Show', slide %>
+    </div>
+  </li>
 <% end %>
-</table>
+</ul>
 
 <br />
 

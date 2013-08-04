@@ -1,4 +1,5 @@
 <input name="slide-id" type="hidden" value="<%= @slide.id %>" />
+<div class="well">
 <%= form_for(@slide) do |f| %>
   <% if @slide.errors.any? %>
     <div id="error_explanation">
@@ -62,4 +63,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>

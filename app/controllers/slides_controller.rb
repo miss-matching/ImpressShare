@@ -18,8 +18,17 @@ class SlidesController < ApplicationController
 
   # GET /slides/1
   # GET /slides/1.json
+  def presentation
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @slide }
+    end
+
+  end
+  # GET /slides/1
+  # GET /slides/1.json
   def show
-    @slide = Slide.find(params[:id])
 
     respond_to do |format|
       format.html do

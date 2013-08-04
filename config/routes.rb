@@ -2,6 +2,7 @@ ImpressShareRails::Application.routes.draw do
 
   resources :slides do
     post :preview, on: :collection
+    get :presentation, on: :member
   end
 
 
@@ -9,7 +10,6 @@ ImpressShareRails::Application.routes.draw do
 
   resources :users do
   end
-
 
   resources :sessions, only: [:new]do
   end
