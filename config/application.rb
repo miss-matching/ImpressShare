@@ -70,5 +70,13 @@ module ImpressShareRails
     config.preview_path = 'preview/'
 
 
+    # see if markdown2impress is ready to go
+    # if not, switch to the bypass mode!
+    command = './script/markdown2impress/bin/markdown2impress.pl' 
+    target = './script/markdown2impress/README.md'
+    dest_dir = './script/markdown2impress'
+    markdown2impress_is_verified = system( "#{command} #{target} --outputdir=#{dest_dir}" )
+    ImpressShareRails::Application.config.bypass_markdown2impress =  !markdown2impress_is_verified
+
   end
 end
