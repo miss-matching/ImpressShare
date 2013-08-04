@@ -36,3 +36,7 @@ $ ->
     $("#preview")[0].contentWindow.impress().prev()
     false
 
+  $('#controlls .fullscrean').on 'click', ->
+    $("#preview")[0].webkitRequestFullScreen()
+    false
+
