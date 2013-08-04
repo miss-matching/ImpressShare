@@ -28,4 +28,11 @@ $ ->
       $('#markdown-content').val( data.markdown_content )
       refreshPreview()
 
+  $('#controlls .next').on 'click', ->
+    $("#preview")[0].contentWindow.impress().next()
+    false
+
+  $('#controlls .prev').on 'click', ->
+    $("#preview")[0].contentWindow.impress().prev()
+    false
 
