@@ -9,9 +9,12 @@ $ ->
   refreshPreview = ->
     url = "/slides/preview"
     console.log url
-    $.post(url, { content: $('#markdown-content').val() })
+    $.post(url, { content: $('#markdown-content').val(), location: preview.location.href })
     .done (data)->
+      console.log data.page
       preview.location.href = data.slide_path  
+
+      preview.location.href = "http://localhost:3000#{data.page}" if data.page
 
   
   # refresh

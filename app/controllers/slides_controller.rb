@@ -46,14 +46,22 @@ class SlidesController < ApplicationController
 
 
 
+  # POST /slides/preview
+  # params
+  #   content   : markdownの文字列  
+  #   location  : iframeのlocation.hrefの中身
   def preview
 
-    slide_path = SlideFileProc.markdown2impress_from_content( params[:content] )
+    preview_dir_name = params[:location].
+      sub( root_url + "preview/" , "" ).
+      sub( /\/\#.*/ , "" ).
+      sub(/\/index.*/, "")  if params[:location] && params[:location] != root_url + "dummy_slide.html"
+    page_uri = params[:location].scan( /\#.*/ )
 
-    #slide_path = "/markdown/1/wawa/index.html"
-    status = 'ok'
+    slide_path = SlideFileProc.markdown2impress_from_content(  { preview_dir_name: preview_dir_name, content: params[:content]} )
+    page = "#{slide_path}/#{page_url[0]}" if page_uri.present?
 
-    render json: { slide_path: slide_path, status: status }
+    render json: { slide_path: slide_path, page: page }
 
   end
 
