@@ -13,3 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require greenmind-0.1.0/js/bootstrap
+// @import 'greenmind-0.1.0/js/bootstrap';

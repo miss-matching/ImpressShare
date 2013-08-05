@@ -1,24 +1,34 @@
-<h1>Listing slides</h1>
-
-<ul class="listview fluid">
-<% @slides.each do |slide| %>
-  <li>
-  
-    <div class="icon">
-      <%= image_tag 'rails.png' %>
+<div class="page-content">
+  <h1>Listing slides</h1>
+  <ul class="listview fluid">
+  <% @slides.each do |slide| %>
+    <div class="image-container light">
+      <%= image_tag 'http://wakamsha.github.io/greenmind/img/img3.jpg' %>
+      <div class="overlay">
+        <% if sign_for_slide_kind( slide ) == "markdown" then %>
+          <div class="slide-item-row"><i class="icon-github"></i></div>
+        <% else %>
+          <div class="slide-item-row"><i class="icon-github"></i></div>
+        <% end %>
+        <div class="slide-item-row">use:<%= slide.user.name %></div>
+        <div class="slide-item-row"><%= link_to slide.title, slide %></div>
+      </div>
     </div>
-    <div class="data" >
-      kind:<%= sign_for_slide_kind( slide ) %>
-      <br>use:<%= slide.user.name %>
-      <br>title:<%= slide.title %>
-      <br>description:<%= slide.description %>
-      <br>image:<%= slide.image_url %>
-      <br><%= link_to 'Show', slide %>
-    </div>
-  </li>
-<% end %>
-</ul>
-
-<br />
-
-<%= link_to 'New Slide', new_slide_path %>
+    <!-- <li class="light">
+    
+      <div class="icon">
+        <i class="icon-slideshare"></i>
+        <%= image_tag 'rails.png' %>
+      </div>
+      <div class="data" >
+        kind:<%= sign_for_slide_kind( slide ) %>
+        <br>use:<%= slide.user.name %>
+        <br>title:<%= slide.title %>
+        <br>description:<%= slide.description %>
+        <br>image:<%= slide.image_url %>
+        <br><%= link_to 'Show', slide %>
+      </div>
+    </li> -->
+  <% end %>
+  </ul>
+</div>
