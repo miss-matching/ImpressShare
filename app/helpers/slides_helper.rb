@@ -15,4 +15,9 @@ module SlidesHelper
       Slide::KIND_MARKDOWN => 'markdown'}[slide.kind]
   end
 
+  def sign_for_slide_kind_class( slide )
+    { Slide::KIND_GITHUB => 'icon-github',
+      Slide::KIND_MARKDOWN => 'icon-circle-arrow-down'}[slide.kind]
+  end
+
 end
