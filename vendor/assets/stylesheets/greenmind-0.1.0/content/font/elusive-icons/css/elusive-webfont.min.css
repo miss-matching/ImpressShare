@@ -11,11 +11,11 @@
 
 @font-face {
   font-family: 'Elusive-Icons';
-  src:url('../font/Elusive-Icons.eot');
-  src:url('../font/Elusive-Icons.eot?#iefix') format('embedded-opentype'),
-    url('../font/Elusive-Icons.svg#Elusive-Icons') format('svg'),
-    url('../font/Elusive-Icons.woff') format('woff'),
-    url('../font/Elusive-Icons.ttf') format('truetype');
+  src:url('greenmind-0.1.0/content/font/elusive-icons/font/Elusive-Icons.eot');
+  src:url('greenmind-0.1.0/content/font/elusive-icons/font/Elusive-Icons.eot?#iefix') format('embedded-opentype'),
+    url('greenmind-0.1.0/content/font/elusive-icons/font/Elusive-Icons.svg#Elusive-Icons') format('svg'),
+    url('greenmind-0.1.0/content/font/elusive-icons/font/Elusive-Icons.woff') format('woff'),
+    url('greenmind-0.1.0/content/font/elusive-icons/font/Elusive-Icons.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

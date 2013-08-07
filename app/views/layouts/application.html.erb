@@ -8,10 +8,16 @@
 </head>
 <body>
 
-<header>
+<header class="navbar">
   <%= render 'shared/header', current_user: @current_user %>
 </header>
 <%= yield %>
 
 </body>
+<script>
+  $(function(){
+    $('i[rel=tooltip]').tooltip();
+    $('i[rel=popover]').popover();
+  });
+</script>
 </html>

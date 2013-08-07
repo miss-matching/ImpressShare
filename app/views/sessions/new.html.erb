@@ -1,8 +1,11 @@
-<%= form_tag :session, class: 'well' do %>
-  <h3>log in</h3>
-  <%= text_field_tag "login_id", "", placeholder: "login id", class: '' %>
-  <%= password_field_tag "password", "" %><br>
-  <%= submit_tag "ログイン" , class: "btn-ex btn-block btn-large " %><br>
-<% end %>
+<div class="container">
+	<%= form_tag :session, class: 'well, form-signin' do %>
+	  <h3 class="form-signin-heading">Log In</h3>
+	  <%= text_field_tag "login_id", "", placeholder: "Login id", class: 'input-block-level' %>
+	  <%= password_field_tag "password", "", placeholder: "Password", class: "input-block-level" %>
+	  <%= submit_tag "ログイン" , class: "btn btn-primary" %>
 
-<%= link_to 'Sign up', new_user_path %>
+	  <div><%= link_to 'Sign up', new_user_path %></div>
+	<% end %>
+
+</div>
