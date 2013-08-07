@@ -5,6 +5,7 @@ ImpressShareRails::Application.routes.draw do
     get :presentation, on: :member
   end
 
+  match "/auth/:provider/callback" => "sessions#create"
 
   root :to => 'slides#index'
 

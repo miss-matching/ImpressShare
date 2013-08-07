@@ -1,23 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @user.image_url %>
+</p>
+<p>
   <b>Name:</b>
   <%= @user.name %>
-</p>
-
-<p>
-  <b>Twitter uid:</b>
-  <%= @user.twitter_uid %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
-  <b>Login:</b>
-  <%= @user.login_id %>
 </p>
 
 

@@ -1,22 +1,22 @@
 <div class="navbar-inner">
-	<%= link_to 'ImpressShare', :root, class: 'brand' %>
-	<ul class="nav nav-pills pull-right">
-		<li><%= link_to 'Upload', new_slide_path, class: 'btn btn-danger' %></li>
-		<% if current_user %>
-			<li class= "dropdown">
-				<a href="#" title="Settings" data-toggle="dropdown">
-					<i class="icon-white icon-user"></i><%= current_user.name %>
-				</a>
-				<ul class="dropdown-menu">
-					<li><%= link_to 'Profile' , user_path(current_user)  %></li>
-					<li><%= link_to 'log out',  :session ,method: :delete %></li>
-				</ul>
-			</li>
-		<% else %>
-			<li><%= link_to(new_session_path) do %>
-				<i class="icon-white icon-off"></i> log in
-			<% end %></li>
-		<% end %>
+  <%= link_to 'ImpressShare', :root, class: 'brand' %>
+  <ul class="nav nav-pills pull-right">
+    <li><%= link_to 'Upload', new_slide_path, class: 'btn btn-danger' %></li>
+    <% if current_user %>
+      <li class= "dropdown">
+        <a href="#" title="Settings" data-toggle="dropdown">
+          <i class="icon-white icon-user"></i><%= current_user.name %>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'Profile' , user_path(current_user)  %></li>
+          <li><%= link_to 'log out',  :session ,method: :delete %></li>
+        </ul>
+      </li>
+    <% else %>
+      <li><%= link_to(new_session_path) do %>
+        <i class="icon-white icon-off"></i> log in
+      <% end %></li>
+    <% end %>
     </ul>
 </div>
 

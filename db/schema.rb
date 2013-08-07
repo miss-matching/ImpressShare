@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801140531) do
+ActiveRecord::Schema.define(:version => 20130807045658) do
 
   create_table "slides", :force => true do |t|
     t.integer  "user_id"
@@ -21,23 +21,21 @@ ActiveRecord::Schema.define(:version => 20130801140531) do
     t.string   "image_url"
     t.string   "identifier"
     t.string   "github_url"
-    t.string   "markdown_content", :limit => 10000
-    t.string   "command_options",  :limit => 500
+    t.string   "markdown_content"
+    t.string   "command_options"
     t.integer  "published_status"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
-  add_index "slides", ["identifier"], :name => "index_slides_on_identifier", :unique => true
   add_index "slides", ["user_id"], :name => "index_slides_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "twitter_uid"
-    t.string   "password"
-    t.string   "login_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image_url"
   end
 
 end
