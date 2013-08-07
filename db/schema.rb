@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(:version => 20130807045658) do
     t.string   "image_url"
     t.string   "identifier"
     t.string   "github_url"
-    t.string   "markdown_content"
-    t.string   "command_options"
+    t.string   "markdown_content", :limit => 10000
+    t.string   "command_options",  :limit => 500
     t.integer  "published_status"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
+  add_index "slides", ["identifier"], :name => "index_slides_on_identifier", :unique => true
   add_index "slides", ["user_id"], :name => "index_slides_on_user_id"
 
   create_table "users", :force => true do |t|

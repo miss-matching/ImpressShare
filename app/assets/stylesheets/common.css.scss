@@ -2,10 +2,40 @@
 // Place all the styles related to the slides controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html,
 body{
-
+  height: 100%;
   //background-image: url("rails.png");
 }
+
+p {
+  margin: 0;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+}
+
+#push {
+  height: 60px;
+}
+
+#footer {
+  background-color: #232c33;
+}
+
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @mixin solid_border{
   border-width: 1px;
   border-style: solid;
@@ -54,3 +84,15 @@ header{
   height: 300px;
 }
 
+.credit {
+  margin: 20px 0;
+  color: #808080;
+}
+
+.footer-link {
+  color: #2793e6;
+}
+
+.btn-center {
+  text-align: center;
+}

@@ -1,6 +1,9 @@
 <div class="container">
   <div class="form-signin">
-    <%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'btn' %>
+    <div><%= link_to('/auth/twitter', class: 'btn btn-info') do %>
+    	<i class="icon-twitter"></i> Sign in with Twitter
+    <% end %>
+	</div>
   </div>
 
 </div>
