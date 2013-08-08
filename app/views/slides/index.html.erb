@@ -13,7 +13,7 @@
             use:<%= slide.user.name %></div>
           <% end %>
         <div class="slide-item-row"><%= link_to slide.title, slide, class: "slide-item-title"%></div>
-        <div class="slide-item-row">2013/08/05 20:00:00</div>
+        <div class="slide-item-row"><%= slide.updated_at %></div>
       </div>
     </div>
   <% end %>
