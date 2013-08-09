@@ -8,7 +8,7 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.json
   def index
-    @slides = Slide.includes( :user ).all
+    @slides = Slide.published.includes( :user ).all
 
     respond_to do |format|
       format.html # index.html.erb

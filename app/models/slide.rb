@@ -1,12 +1,16 @@
 class Slide < ActiveRecord::Base
   belongs_to :user
   attr_accessible :command_options, :description, :github_url, :image_url, :kind, :markdown_content, :title,
-    :identifier
+    :identifier, :published_status
 
   validates :identifier, presence: true, uniqueness: true
+  scope :published, ->{ where(published_status: STATUS_PUBLISHED) }
 
   KIND_GITHUB = '0'
   KIND_MARKDOWN = '1'
+
+  STATUS_PUBLISHED = 1
+  STATUS_UNPUBLISHED = 0
 
   def is_markdown_slide?
     self.kind == KIND_MARKDOWN
