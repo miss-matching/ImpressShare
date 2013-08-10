@@ -11,7 +11,7 @@
 <h3>スライドたち</h3>
 <ul class="listview fluid" id="published-slides">
 </ul>
-<% if @current_user.id.to_s == params[:id] %>
+<% if @current_user && @current_user.id.to_s == params[:id] %>
   <h3>下書き</h3>
   <ul class="listview fluid" id="draft-slides">
   </ul>
@@ -24,13 +24,13 @@
 
 <%= javascript_tag do %>
   $(document).ready( function(){
-    window.Slides.loadPublishedSlidesOwnedBy( <%= @current_user.id %>  );
+    window.Slides.loadPublishedSlidesOwnedBy( <%= @user.id %>  );
   });
 <% end %>
-<% if @current_user.id.to_s == params[:id] %>
+<% if @current_user && @current_user.id.to_s == params[:id] %>
   <%= javascript_tag do %>
     $(document).ready( function(){
-      window.Slides.loadDraftSlidesOwnedBy( <%= @current_user.id %>  );
+      window.Slides.loadDraftSlidesOwnedBy( <%= @user.id %>  );
     });
   <% end %>
 <% end %>
