@@ -50,18 +50,18 @@
       <%= f.label :command_options %><br />
       <%= f.text_field :command_options %>
     </div>
+    <div class="field">
+      <%= f.hidden_field :published_status, value: '0', id: 'published_status' %>
+    </div>
     <div id="preview-box">
       <iframe id="preview" src="/dummy_slide.html">
       </iframe>
     </div>
   </div>
 
-
-
-
-
-  <div class="actions">
-    <%= f.submit %>
+  <div id="form-controller" >
+    <button class="commit" >confirm</button>
+    <button class="draft" >save as draft</button>
   </div>
 </div>
 <% end %>

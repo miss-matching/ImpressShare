@@ -42,3 +42,15 @@ $ ->
     $("#preview")[0].webkitRequestFullScreen()
     false
 
+  $('#form-controller .commit').on 'click', ->
+    form = $(@).closest("form")
+    $('#published_status').val("1")
+    form.submit()
+
+  $('#form-controller .draft').on 'click', ->
+    form = $(@).closest("form")
+    $('#published_status').val("0")
+    form.submit()
+
+
+
