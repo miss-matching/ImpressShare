@@ -18,3 +18,117 @@
 @import 'common';
 @import 'slides';
 @import 'session';
+
+
+// 作業棲み分けのためここにかかせてください。
+
+$opacityForHide:  0.1;
+
+@mixin solid-border{
+  border-width: 1px;
+  border-style: solid;
+}
+
+body.presenting{
+  min-width: 1000px;
+}
+
+#presentation:-webkit-full-screen{
+  width: 100%;
+  height: 100%;
+}
+#presentation{
+  position: relative;
+  top :0px;
+  min-height: 500px;
+  min-width: 980px;
+  width: 95%;
+  padding: 0px 10px;
+
+  #presentation-frame{
+    height: 100%;
+    width: 100%;
+  }
+
+  .iframe-box{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+  }
+  .controlls:hover{
+      opacity: 1;
+  }
+
+  .controlls,.chat{
+    -webkit-transition: opacity .3s linear;
+    -moz-transition: opacity .3s linear;
+    -o-transition: opacity .3s linear;
+    transition: opacity .3s linear;
+  }
+
+
+  .controlls{
+    li{
+      display: inline;
+    }
+    margin: 0px 5px;
+    height: 45px;
+    list-style: none;
+    background-color: #ffffff;
+    opacity: $opacityForHide;
+    @include solid-border;
+    position: absolute;
+    bottom: 0px;
+    z-index: 10;
+    right: 320px;
+    left: 10px;
+  }
+  .chat{
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 300px;
+    opacity: $opacityForHide;
+
+    .relative-box{
+      position: relative;
+      height: 100%;
+    }
+    .logs{
+      overflow: scroll;
+      background-color: #ffffff;
+      position: absolute;
+      top: 10px;
+      bottom: 50px;
+      width: 100%;
+      @include solid-border;
+    }
+    .chat-controlls{
+      @include solid-border;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      height: 45px;
+      padding: 3px 10px;
+    }
+
+    input[name=message]{
+      width: 50px;
+    }
+  }
+
+  .chat:hover{
+    opacity: 1;
+
+  }
+  
+}
+
+
+
+
+

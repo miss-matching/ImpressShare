@@ -1,12 +1,32 @@
-
+<div class="master-box">
 <h1>プレゼンするよ</h1>
-<ul id="controlls">
-  <li><a class="prev btn" href="#"><=</a></li>
-  <li><a class="next btn" href="#">=></a></li>
-</ul>
-<div id="preview-box">
-  <iframe id="preview" src="<%= path_for_iframe( @slide ) %>">
-  </iframe>
+
+<div id="presentation">
+  <ul class="controlls">
+    <li><a class="prev btn" href="#"><=</a></li>
+    <li><a class="next btn" href="#">=></a></li>
+    <li><a class="full-screen btn" href="#">full screen</a></li>
+    <li><a class="be-a-presenter btn" href="#">be a presenter</a></li>
+  </ul>
+  <div class="chat">
+    <div class="relative-box">
+      <div class="logs">hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br>hoge<br></div>
+      <div class="chat-controlls">
+        <input type="text" name="message">
+        <button class="btn">send!</button>
+      </div>
+    </div>
+  </div>
+  <div class="iframe-box">
+    <iframe id="presentation-frame" src="<%= path_for_iframe( @slide ) %>">
+    </iframe>
+  </div>
 </div>
+</div>
+<%= javascript_tag do %> 
+  $(document).ready( function(){
+    $("body").addClass("presenting");
+  });
+<% end %>
 
 

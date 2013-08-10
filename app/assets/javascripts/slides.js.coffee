@@ -52,5 +52,11 @@ $ ->
     $('#published_status').val("0")
     form.submit()
 
+  $('#presentation .controlls .full-screen').on 'click', ->
+    $("#presentation")[0].webkitRequestFullScreen()
+    false
+
+
+
 
 
