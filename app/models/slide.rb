@@ -5,6 +5,7 @@ class Slide < ActiveRecord::Base
 
   validates :identifier, presence: true, uniqueness: true
   scope :published, ->{ where(published_status: STATUS_PUBLISHED) }
+  scope :draft, ->{ where(published_status: STATUS_UNPUBLISHED) }
 
   KIND_GITHUB = '0'
   KIND_MARKDOWN = '1'
