@@ -10,7 +10,6 @@ class CreateSlides < ActiveRecord::Migration
       t.string :github_url
       t.string :markdown_content ,limit: 10000
       t.string :command_options, limit: 500
-      t.integer :published_status
 
       t.timestamps
     end

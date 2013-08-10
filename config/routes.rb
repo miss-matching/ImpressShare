@@ -10,6 +10,8 @@ ImpressShareRails::Application.routes.draw do
   root :to => 'slides#index'
 
   resources :users do
+    resources :slides, only:[:index] do
+    end
   end
 
   resources :sessions, only: [:new]do

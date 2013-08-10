@@ -1,0 +1,13 @@
+<li>
+  <div class="icon">
+    <%= image_tag 'rails.png' %>
+  </div>
+  <div class="data" >
+    kind:<%= sign_for_slide_kind( slide ) %>
+    <br>use:<%= slide.user.name %>
+    <br>title:<%= slide.title %>
+    <br>description:<%= slide.description %>
+    <br>image:<%= slide.image_url %>
+    <br><%= link_to 'Show', slide %>
+  </div>
+</li>
