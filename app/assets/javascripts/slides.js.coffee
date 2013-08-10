@@ -52,5 +52,28 @@ $ ->
     $('#published_status').val("0")
     form.submit()
 
+  $('#presentation .controlls .full-screen').on 'click', ->
+    $("#presentation")[0].webkitRequestFullScreen()
+    false
+
+  $('#presentation .tab-controlls .members-tab').on 'click', ->
+    $("#presentation .logs").addClass("hidden")
+    $("#presentation .members").removeClass("hidden")
+    $('#presentation .tab-controlls .members-tab').addClass("active")
+    $('#presentation .tab-controlls .logs-tab').removeClass("active")
+    false
+  $('#presentation .tab-controlls .logs-tab').on 'click', ->
+    $("#presentation .members").addClass("hidden")
+    $("#presentation .logs").removeClass("hidden")
+    $('#presentation .tab-controlls .logs-tab').addClass("active")
+    $('#presentation .tab-controlls .members-tab').removeClass("active")
+    false
+  $('#presentation .controlls .be-a-presenter').on 'click', ->
+    alert 'パスワード入れて、プレゼンターになろう！'
+
+  $('#presentation .controlls .sync').on 'click', ->
+    $(@).toggleClass("sync-on")
+
+
 
 
