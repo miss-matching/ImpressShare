@@ -1,57 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="page-content">
+  <div class="show-left">
+    <div id="preview-box">
+      <div class="slide-view">
+        <iframe id="preview" border="0" frameborder="0" src="<%= path_for_iframe( @slide ) %>">
+        </iframe>
+      </div>
+    </div>
 
-<p>
-  <b>User:</b>
-  <%= @slide.user %>
-</p>
+    <div class="button-view">
+      <a class="prev btn btn-info" href="#">
+        <i class="icon-backward"></i>
+      </a>
+      <a class="next btn btn-info" href="#">
+        <i class="icon-forward"></i>
+      </a>
+      <a class="fullscrean btn btn-info" href="#">
+          <i class="icon-fullscreen"></i>
+      </a>
+    </div>
 
-<p>
-  <b>Title:</b>
-  <%= @slide.title %>
-</p>
+    <div class="slide-info">
+      <div class="slide-info-left">
+        <%= image_tag @slide.user.image_url %>
+      </div>
+      <div class="slide-info-right">
+        <div class="slide-info-title"><%= @slide.title %></div>
+        <div class="slide-info-discription"><%= @slide.description %></div>
+      </div>
+    </div>
 
-<p>
-  <b>Identifier:</b>
-  <%= @slide.identifier %>
-</p>
-<p>
-  <b>Description:</b>
-  <%= @slide.description %>
-</p>
+    
 
-<p>
-  <b>Kind:</b>
-  <%= @slide.kind %>
-</p>
+    <%= link_to 'Edit', edit_slide_path(@slide) %>
+  </div>
+  <div class="show-right">
+    <div class="">
+      <ul class="user-slide-list">
+        <li>
+          <%= link_to 'presentation', presentation_slide_path(@slide), class: 'btn' %>
+        </li>
 
-<p>
-  <b>Image url:</b>
-  <%= @slide.image_url %>
-</p>
-
-<p>
-  <b>Github url:</b>
-  <%= @slide.github_url %>
-</p>
-
-<p>
-  <b>Command options:</b>
-  <%= @slide.command_options %>
-</p>
-
-<%= link_to 'presentation', presentation_slide_path(@slide), class: 'btn' %>
-
-
-<%= link_to 'Edit', edit_slide_path(@slide) %> |
-<%= link_to 'Back', slides_path %>
-<ul id="controlls">
-  <li><a class="fullscrean" href="#" class="btn">full screan</a></li>
-  <li><a class="prev btn" href="#"><=</a></li>
-  <li><a class="next btn" href="#">=></a></li>
-</ul>
-<div id="preview-box">
-  <iframe id="preview" src="<%= path_for_iframe( @slide ) %>">
-  </iframe>
+        <%  @slide.user.slides.each do |slide| %>
+          <% if slide.title != @slide.title then %>
+            <li>
+              <%= link_to(slide, class: "slide-list-title") do %>
+                <span>
+                  <%= image_tag 'http://wakamsha.github.io/greenmind/img/img3.jpg', class: "slide-list-img"  %>
+                </span>
+                <span>
+                  <%= slide.title %>
+                </span>              
+              <% end %>
+            </li>
+          <% end %>   
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
 
 

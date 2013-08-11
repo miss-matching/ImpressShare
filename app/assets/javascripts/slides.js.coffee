@@ -30,6 +30,18 @@ $ ->
       $('#markdown-content').val( data.markdown_content )
       refreshPreview()
 
+  $('.button-view .next').on 'click', ->
+    $("#preview")[0].contentWindow.impress().next()
+    false
+
+  $('.button-view .prev').on 'click', ->
+    $("#preview")[0].contentWindow.impress().prev()
+    false
+
+  $('.button-view .fullscrean').on 'click', ->
+    $("#preview")[0].webkitRequestFullScreen()
+    false
+
   $('#controlls .next').on 'click', ->
     $("#preview")[0].contentWindow.impress().next()
     false

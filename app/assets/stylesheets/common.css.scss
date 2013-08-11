@@ -51,13 +51,13 @@ header{
 }
 
 .page-content {
-  background: #FFF;
+  //background: #FFF;
   padding: 0 20px 88px;
 }
 
 #preview-box{
   width: 1200px;
-  height: 600px;
+  height: 330px;
   padding: 5px;
   -webkit-transform-origin: 0 0%;
    -webkit-transform: scale(0.5);  
@@ -74,6 +74,7 @@ header{
 #preview{
   width: 100%;
   height: 580px;
+  border:none;
 }
 #preview:-webkit-full-screen{
   width: 100%;
