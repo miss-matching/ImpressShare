@@ -8,11 +8,31 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.json
   def index
-    @slides = Slide.includes( :user ).all
+    if params[:user_id] 
+      @slides = User.find(params[:user_id]).slides.includes(:user)
+
+      # draft or published
+      if params[:status] == "draft"
+        raise 'sawaranaide' unless params[:user_id] == @current_user.id.to_s
+        @slides = @slides.draft
+      else
+        @slides = @slides.published 
+      end
+
+    else
+      @slides = Slide.published.includes( :user )
+    end
+
+
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @slides }
+      format.json do
+        htmls = @slides.map.with_index do |slide|
+          render_to_string partial: "item_view", layout: false ,locals: { slide: slide }, formats: [:html]
+        end
+        render json: { htmls: htmls, slides: @slides }
+      end
     end
   end
 
@@ -99,7 +119,7 @@ class SlidesController < ApplicationController
           SlideFileProc.markdown2impress( @slide )
         end
 
-        format.html { redirect_to @slide, notice: 'Slide was successfully created.' }
+        format.html { redirect_to @current_user, notice: 'Slide was successfully created.' }
         format.json { render json: @slide, status: :created, location: @slide }
       else
         format.html { render action: "new" }
@@ -121,7 +141,7 @@ class SlidesController < ApplicationController
         if @slide.is_markdown_slide?
           SlideFileProc.markdown2impress( @slide )
         end
-        format.html { redirect_to @slide, notice: 'Slide was successfully updated.' }
+        format.html { redirect_to @current_user, notice: 'Slide was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

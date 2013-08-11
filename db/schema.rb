@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807045658) do
+ActiveRecord::Schema.define(:version => 20130808131935) do
 
   create_table "slides", :force => true do |t|
     t.integer  "user_id"

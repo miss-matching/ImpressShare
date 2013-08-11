@@ -5,6 +5,66 @@
 
 $ ->
 
+  $('#controlls .next').on 'click', ->
+    $("#preview")[0].contentWindow.impress().next()
+    false
+
+  $('#controlls .prev').on 'click', ->
+    $("#preview")[0].contentWindow.impress().prev()
+    false
+
+  $('#controlls .fullscrean').on 'click', ->
+    $("#preview")[0].webkitRequestFullScreen()
+    false
+
+  $('.button-view .next').on 'click', ->
+    $("#preview")[0].contentWindow.impress().next()
+    false
+
+  $('.button-view .prev').on 'click', ->
+    $("#preview")[0].contentWindow.impress().prev()
+    false
+
+  $('.button-view .fullscrean').on 'click', ->
+    $("#preview")[0].webkitRequestFullScreen()
+    false
+
+  $('#form-controller .commit').on 'click', ->
+    form = $(@).closest("form")
+    $('#published_status').val("1")
+    form.submit()
+
+  $('#form-controller .draft').on 'click', ->
+    form = $(@).closest("form")
+    $('#published_status').val("0")
+    form.submit()
+
+  $('#presentation .controlls .full-screen').on 'click', ->
+    $("#presentation")[0].webkitRequestFullScreen()
+    false
+
+  $('#presentation .tab-controlls .members-tab').on 'click', ->
+    $("#presentation .logs").addClass("hidden")
+    $("#presentation .members").removeClass("hidden")
+    $('#presentation .tab-controlls .members-tab').addClass("active")
+    $('#presentation .tab-controlls .logs-tab').removeClass("active")
+    false
+  $('#presentation .tab-controlls .logs-tab').on 'click', ->
+    $("#presentation .members").addClass("hidden")
+    $("#presentation .logs").removeClass("hidden")
+    $('#presentation .tab-controlls .logs-tab').addClass("active")
+    $('#presentation .tab-controlls .members-tab').removeClass("active")
+    false
+  $('#presentation .controlls .be-a-presenter').on 'click', ->
+    alert 'パスワード入れて、プレゼンターになろう！'
+
+  $('#presentation .controlls .sync').on 'click', ->
+    $(@).toggleClass("sync-on")
+
+
+######################
+# EDIT
+######################
   # convert markdown to impress, then display
   refreshPreview = ->
     url = "/slides/preview"
@@ -19,6 +79,13 @@ $ ->
   # refresh
   $('#btn-preview').on 'click', ->
     refreshPreview()
+    $('.markdown-preview').removeClass('hidden')
+    $('.markdown-content').addClass('hidden')
+
+  $('#btn-edit').on 'click', ->
+    $('.markdown-preview').addClass('hidden')
+    $('.markdown-content').removeClass('hidden')
+
 
   # reload markdown content, then refreash the preview
   $('#btn-reload').on 'click', ->
@@ -29,28 +96,21 @@ $ ->
     .done (data)->
       $('#markdown-content').val( data.markdown_content )
       refreshPreview()
+  
 
-  $('.button-view .next').on 'click', ->
-    $("#preview")[0].contentWindow.impress().next()
-    false
+  $('#slide-edit .slide-kind').on 'change', ->
+    window.initializeEditViewBySlideKind()
 
-  $('.button-view .prev').on 'click', ->
-    $("#preview")[0].contentWindow.impress().prev()
-    false
+  window.initializeEditViewBySlideKind = ->
+    kind = $('#slide-edit .slide-kind')
+    GITHUB = "0"
+    MARKDOWN = "1"
+    if kind.val() == GITHUB
+      $('#slide-edit .edit-for-markdown').addClass('hidden')
+      $('#slide-edit .edit-for-github').removeClass('hidden')
+    else if kind.val() == MARKDOWN
+      $('#slide-edit .edit-for-markdown').removeClass('hidden')
+      $('#slide-edit .edit-for-github').addClass('hidden')
 
-  $('.button-view .fullscrean').on 'click', ->
-    $("#preview")[0].webkitRequestFullScreen()
-    false
 
-  $('#controlls .next').on 'click', ->
-    $("#preview")[0].contentWindow.impress().next()
-    false
-
-  $('#controlls .prev').on 'click', ->
-    $("#preview")[0].contentWindow.impress().prev()
-    false
-
-  $('#controlls .fullscrean').on 'click', ->
-    $("#preview")[0].webkitRequestFullScreen()
-    false
 
