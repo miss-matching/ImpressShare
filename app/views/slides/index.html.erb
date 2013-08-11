@@ -10,7 +10,7 @@
         <div class="slide-item-row">
           <i data-placement="right" rel="tooltip" data-original-title="<%= sign_for_slide_kind( slide ) %>" class="<%= sign_for_slide_kind_class( slide ) %>"></i>
           <%= link_to(user_path(slide.user)) do %>
-            use:<%= slide.user.name %></div>
+            <%= slide.user.name %></div>
           <% end %>
         <div class="slide-item-row"><%= link_to slide.title, slide, class: "slide-item-title"%></div>
         <div class="slide-item-row"><%= slide.updated_at %></div>
