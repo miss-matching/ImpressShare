@@ -2,17 +2,20 @@
 <html>
 <head>
   <title>ImpressShareRails</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "screen" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
-
-<header class="navbar">
-  <%= render 'shared/header', current_user: @current_user %>
-</header>
-<%= yield %>
-
+<div id="wrap">
+	<header class="navbar">
+	  <%= render 'shared/header', current_user: @current_user %>
+	</header>
+	 <%= yield %>
+	<div id="push"></div>
+</div>
+<%= render 'shared/footer' %>
 </body>
 <script>
   $(function(){

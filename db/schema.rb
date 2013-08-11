@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(:version => 20130808131935) do
     t.string   "github_url"
     t.string   "markdown_content", :limit => 10000
     t.string   "command_options",  :limit => 500
+    t.integer  "published_status"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
-    t.integer  "published_status"
   end
 
   add_index "slides", ["identifier"], :name => "index_slides_on_identifier", :unique => true

@@ -17,6 +17,18 @@ $ ->
     $("#preview")[0].webkitRequestFullScreen()
     false
 
+  $('.button-view .next').on 'click', ->
+    $("#preview")[0].contentWindow.impress().next()
+    false
+
+  $('.button-view .prev').on 'click', ->
+    $("#preview")[0].contentWindow.impress().prev()
+    false
+
+  $('.button-view .fullscrean').on 'click', ->
+    $("#preview")[0].webkitRequestFullScreen()
+    false
+
   $('#form-controller .commit').on 'click', ->
     form = $(@).closest("form")
     $('#published_status').val("1")
@@ -84,7 +96,7 @@ $ ->
     .done (data)->
       $('#markdown-content').val( data.markdown_content )
       refreshPreview()
-
+  
 
   $('#slide-edit .slide-kind').on 'change', ->
     window.initializeEditViewBySlideKind()
