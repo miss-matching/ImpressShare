@@ -5,31 +5,6 @@
 
 $ ->
 
-  # convert markdown to impress, then display
-  refreshPreview = ->
-    url = "/slides/preview"
-    console.log url
-    $.post(url, { content: $('#markdown-content').val(), location: preview.location.href })
-    .done (data)->
-      console.log data.page
-      preview.location.href = data.slide_path  
-      preview.location.href = data.page if data.page
-
-  
-  # refresh
-  $('#btn-preview').on 'click', ->
-    refreshPreview()
-
-  # reload markdown content, then refreash the preview
-  $('#btn-reload').on 'click', ->
-    slide_id = $('input[name=slide-id]').val()
-    slide_show_url = "/slides/#{slide_id}"
-    slide_preview_url = "/slides/preview"
-    $.getJSON(slide_show_url)
-    .done (data)->
-      $('#markdown-content').val( data.markdown_content )
-      refreshPreview()
-
   $('#controlls .next').on 'click', ->
     $("#preview")[0].contentWindow.impress().next()
     false
@@ -74,6 +49,56 @@ $ ->
   $('#presentation .controlls .sync').on 'click', ->
     $(@).toggleClass("sync-on")
 
+
+######################
+# EDIT
+######################
+  # convert markdown to impress, then display
+  refreshPreview = ->
+    url = "/slides/preview"
+    console.log url
+    $.post(url, { content: $('#markdown-content').val(), location: preview.location.href })
+    .done (data)->
+      console.log data.page
+      preview.location.href = data.slide_path  
+      preview.location.href = data.page if data.page
+
+  
+  # refresh
+  $('#btn-preview').on 'click', ->
+    refreshPreview()
+    $('.markdown-preview').removeClass('hidden')
+    $('.markdown-content').addClass('hidden')
+
+  $('#btn-edit').on 'click', ->
+    $('.markdown-preview').addClass('hidden')
+    $('.markdown-content').removeClass('hidden')
+
+
+  # reload markdown content, then refreash the preview
+  $('#btn-reload').on 'click', ->
+    slide_id = $('input[name=slide-id]').val()
+    slide_show_url = "/slides/#{slide_id}"
+    slide_preview_url = "/slides/preview"
+    $.getJSON(slide_show_url)
+    .done (data)->
+      $('#markdown-content').val( data.markdown_content )
+      refreshPreview()
+
+
+  $('#slide-edit .slide-kind').on 'change', ->
+    window.initializeEditViewBySlideKind()
+
+  window.initializeEditViewBySlideKind = ->
+    kind = $('#slide-edit .slide-kind')
+    GITHUB = "0"
+    MARKDOWN = "1"
+    if kind.val() == GITHUB
+      $('#slide-edit .edit-for-markdown').addClass('hidden')
+      $('#slide-edit .edit-for-github').removeClass('hidden')
+    else if kind.val() == MARKDOWN
+      $('#slide-edit .edit-for-markdown').removeClass('hidden')
+      $('#slide-edit .edit-for-github').addClass('hidden')
 
 
 

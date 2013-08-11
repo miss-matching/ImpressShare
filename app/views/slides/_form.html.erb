@@ -1,6 +1,7 @@
+<div id="slide-edit">
 <input name="slide-id" type="hidden" value="<%= @slide.id %>" />
 <div class="well">
-<%= form_for(@slide) do |f| %>
+  <%= form_for @slide, html: {class: 'form-horizontal' } do |f| %>
   <% if @slide.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@slide.errors.count, "error") %> prohibited this slide from being saved:</h2>
@@ -13,55 +14,103 @@
     </div>
   <% end %>
 
+  <div>
+    <div class="contol-group">
+      <%= f.label :kind, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :kind, kind_options ,{}, class: 'slide-kind span7' %>
+      </div>
+    </div>
+    <br>
+    <div class="control-group">
+      <%= f.label :identifier,  class: 'control-label' %> 
+      <div class="controls">
+        <%= f.text_field :identifier, class: 'span7' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :kind %><br />
-    <%= f.select :kind, kind_options %>
-  </div>
-  <div class="field">
-    <%= f.label :identifier %> *cannot be changed<br />
-    <%= f.text_field :identifier %>
-  </div>
-  <div class="hogehoge-box">
-    <h3>github setting</h3>
-    <div class="field">
-      <%= f.label :github_url %><br />
-      <%= f.text_field :github_url %>
+    <div class="control-group">
+      <%= f.label :title, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title , class: 'span7'%>
+      </div>
     </div>
-  </div>
 
-  <div class="hogehoge-box">
-    <h3>edit markdown</h3>
-    <input type="button" id="btn-preview" value="preview">
-    <input type="button" id="btn-reload" value="reload">
-    <div class="field">
-      <%= f.label :markdown_content %><br />
-      <%= f.text_area :markdown_content, id: 'markdown-content' %>
-    </div>
-    <div class="field">
-      <%= f.label :command_options %><br />
-      <%= f.text_field :command_options %>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :published_status, value: '0', id: 'published_status' %>
-    </div>
-    <div id="preview-box">
-      <iframe id="preview" src="/dummy_slide.html">
-      </iframe>
+    <div class="control-group">
+      <%= f.label :description, class: 'control-label' %>
+      <div class="controls" >
+        <%= f.text_area :description, id: 'description', class: 'span7' %>
+      </div>
     </div>
   </div>
 
-  <div id="form-controller" >
+  <div class="edit-for-github">
+    <div class="control-group">
+
+      <%= f.label :github_url, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :github_url %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="edit-for-markdown">
+    <div class="control-group">
+      <div class="controls">
+        <h3>markdown2impress</h3>
+      </div>
+      <div class="controls">
+        <input type="button" id="btn-edit" value="edit">
+        <input type="button" id="btn-preview" value="preview">
+        <input type="button" id="btn-reload" value="reload">
+        <a href="#help" role="button" data-toggle="modal">
+          <input type="button" id="btn-help" value="help">
+        </a>
+      </div>
+      <div class="controls">
+        <div class="markdown-content">
+          <div class="field">
+            <%= f.text_area :markdown_content, id: 'markdown-content', class: 'span7', size: '10x15' %>
+          </div>
+        </div>
+        <div class="markdown-preview hidden">
+          <div id="preview-box">
+            <iframe id="preview" src="/dummy_slide.html">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.hidden_field :published_status, value: '0', id: 'published_status' %>
+  </div>
+
+  <div class="controls" >
     <button class="commit" >confirm</button>
     <button class="draft" >save as draft</button>
   </div>
 </div>
 <% end %>
+</div>
+<%= javascript_tag do %>
+  $(document).ready( function(){
+    window.initializeEditViewBySlideKind(); 
+  });
+
+<% end %>
+ 
+<!-- Modal -->
+<div id="help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-header">
+   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+   <h3 id="myModalLabel">Help</h3>
+ </div>
+ <div class="modal-body">
+   <p>One fine body…</p>
+ </div>
+ <div class="modal-footer">
+   <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+   <button class="btn btn-primary">Save changes</button>
+ </div>
+</div>
