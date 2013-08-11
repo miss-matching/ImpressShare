@@ -1,4 +1,4 @@
-<div class="page-content">
+<div class="show-content">
   <div class="show-left">
     <div id="preview-box">
       <div class="slide-view">
@@ -25,7 +25,7 @@
       </div>
       <div class="slide-info-right">
         <div class="slide-info-title"><%= @slide.title %></div>
-        <div class="slide-info-discription"><%= @slide.description %></div>
+        <div class="slide-info-discription"><%= simple_format(@slide.description) %></div>
       </div>
     </div>
 
@@ -37,14 +37,16 @@
     <div class="">
       <ul class="user-slide-list">
         <li>
-          <%= link_to 'presentation', presentation_slide_path(@slide), class: 'btn' %>
+          <div class="presentation-btn">
+            <%= link_to 'presentation', presentation_slide_path(@slide), class: 'btn' %>
+          </div>
         </li>
 
         <%  @slide.user.slides.each do |slide| %>
-          <% if slide.title != @slide.title then %>
+          <% if slide.id != @slide.id then %>
             <li>
               <%= link_to(slide, class: "slide-list-title") do %>
-                <span>
+                <span class="slide-list-img-div">
                   <%= image_tag 'http://wakamsha.github.io/greenmind/img/img3.jpg', class: "slide-list-img"  %>
                 </span>
                 <span>
