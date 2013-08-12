@@ -16,6 +16,8 @@
 /log/*.log
 /tmp
 
+/public/assets/
+
 # slide body
 /public/markdown/*
 /public/preview/*
