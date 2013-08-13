@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     
     user = User.find_by_twitter_uid( auth[:uid]) || User.new
     user.twitter_uid = auth[:uid]
-    user.name = auth[:info][:nickname]
+    user.name = auth[:info][:nickname] 
     user.image_url = auth[:info][:image]
     user.save
 
@@ -25,5 +25,8 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to :root
   end
+
+
+  private
 
 end
