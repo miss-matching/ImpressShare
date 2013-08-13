@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @user.image_url %>
+  <%= image_tag convert_profile_image_url_to_the_origin_size( @user.image_url ) %>
 </p>
 <p>
   <b>Name:</b>
