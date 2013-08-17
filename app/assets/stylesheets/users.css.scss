@@ -1,3 +1,58 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-profile {
+  text-align: center;
+}
+
+.user-img img {
+  border: 1px solid #CCC;
+  margin: 5px;
+  background-color: #e6e6fa;
+  width: 120px;
+}
+
+.user-menu {
+  text-align: left;
+  margin-top: 50px;
+}
+
+.user-menu ul {
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.user-menu ul li:first-child .user-menu-item {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.user-menu ul li:last-child .user-menu-item {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.user-menu-item{
+  background-color: #f9f9f9;
+  border-top: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.user-rigit-content {
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 10px 30px 30px;
+}
+
+.user-rigit-content div h3 {
+  border-bottom: 2px solid #dddcd7;
+}

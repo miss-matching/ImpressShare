@@ -1,26 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag convert_profile_image_url_to_the_origin_size( @user.image_url ) %>
-</p>
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<h3>スライドたち</h3>
-<ul class="listview fluid" id="published-slides">
-</ul>
-<% if @current_user && @current_user.id.to_s == params[:id] %>
-  <h3>下書き</h3>
-  <ul class="listview fluid" id="draft-slides">
-  </ul>
-<% end %>
-
-<br />
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="container">
+  <div class="row">
+    <div class="span4 user-profile">
+      <div>
+        <div class="user-img"><%= image_tag convert_profile_image_url_to_the_origin_size( @user.image_url ) %></div>    
+        <div><%= @user.name %></div>
+      </div>
+      <div class="user-menu">
+        <ul class="nav nav-list bs-doc-sidenav affix-top">
+          <li><a class="user-menu-item slide" href="#">スライド<i class="icon-chevron-right pull-right"></i></a></li>
+          <li><a class="user-menu-item draft" href="#">下書き<i class="icon-chevron-right pull-right"></i></a></li>
+          <li><a class="user-menu-item favorite-user" href="#">お気に入りユーザ<i class="icon-chevron-right pull-right"></i></a></li>
+          <li><a class="user-menu-item favorite-slide" href="#">お気に入りスライド<i class="icon-chevron-right pull-right"></i></a></li>
+          <li><a class="user-menu-item favorite-presen" href="#">お気に入りプレゼン<i class="icon-chevron-right pull-right"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="span8">
+      <div class="user-rigit-content">
+        <div class="user-slide-content">
+          <h3>スライド</h3>
+            <ul class="listview fluid" id="published-slides">
+            </ul>
+        </div>
+        <div class="user-draft-content hidden">
+          <h3>下書き</h3>
+        <% if @current_user && @current_user.id.to_s == params[:id] %>
+          <ul class="listview fluid" id="draft-slides">
+          </ul>
+        <% end %>
+        </div>
+        <div class="user-favorite-content hidden">
+          <h3>お気に入りユーザ</h3>
+        </div>
+        <div class="user-favorite-slide-content hidden">
+          <h3>お気に入りスライド</h3>
+        </div>
+        <div class="user-favorite-presen-content hidden">
+          <h3>お気に入りプレゼン</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= javascript_tag do %>
   $(document).ready( function(){
