@@ -1,13 +1,20 @@
 <li>
-  <div class="icon">
-    <%= image_tag 'rails.png' %>
+  <div class="slide-list-item-left">
+    <div>
+      <%= link_to(slide) do %>
+        <%= image_tag 'http://wakamsha.github.io/greenmind/img/img3.jpg', class: 'slide-img-user-list' %>
+      <% end %>
+    </div>
   </div>
-  <div class="data" >
-    kind:<%= sign_for_slide_kind( slide ) %>
-    <br>use:<%= slide.user.name %>
-    <br>title:<%= slide.title %>
-    <br>description:<%= slide.description %>
-    <br>image:<%= slide.image_url %>
-    <br><%= link_to 'Show', slide %>
+  <div class="slide-list-item-right">
+    <div>
+      <i data-placement="right" rel="tooltip" data-original-title="<%= sign_for_slide_kind( slide ) %>" class="<%= sign_for_slide_kind_class( slide ) %>"></i>
+      <%= slide.user.name %>
+    </div>
+    <div class="slide-list-item-title">
+      <%= link_to(slide) do %>
+        <%= slide.title %>
+      <% end %>
+    </div>
   </div>
 </li>
