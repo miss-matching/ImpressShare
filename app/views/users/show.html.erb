@@ -21,13 +21,13 @@
       <div class="user-rigit-content">
         <div class="user-slide-content">
           <h3>スライド</h3>
-            <ul class="listview fluid" id="published-slides">
+            <ul class="user-slide-ul" id="published-slides">
             </ul>
         </div>
         <div class="user-draft-content hidden">
           <h3>下書き</h3>
         <% if @current_user && @current_user.id.to_s == params[:id] %>
-          <ul class="listview fluid" id="draft-slides">
+          <ul class="user-slide-ul" id="draft-slides">
           </ul>
         <% end %>
         </div>

@@ -35,13 +35,14 @@
   </div>
   <div class="show-right">
     <div class="">
-      <ul class="user-slide-list">
+      <ul class="presentation-ul">
         <li>
           <div class="presentation-btn">
             <%= link_to 'presentation', presentation_slide_path(@slide), class: 'btn' %>
           </div>
         </li>
-
+      </ul>
+      <ul class="user-slide-list">
         <%  @slide.user.slides.each do |slide| %>
           <% if slide.id != @slide.id then %>
             <li>
